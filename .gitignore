@@ -40,7 +40,7 @@
 .DS_Store
 
 # Configuration files
-Gemfile.local
+#Gemfile.local
 config/database.yml
 config/dpn.yml
 config/impersonate.yml.local
@@ -52,7 +52,7 @@ config/resque.yml
 config/environments/impersonate*.rb
 
 # Ignore capistrano
-/Capfile
-/config/deploy.rb
-/config/deploy/
-/lib/capistrano
+#/Capfile
+#/config/deploy.rb
+#/config/deploy/
+#/lib/capistrano

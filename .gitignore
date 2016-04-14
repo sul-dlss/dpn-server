@@ -34,13 +34,13 @@
 .DS_Store
 
 # Configuration files
-Gemfile.local
+#Gemfile.local
 config/database.yml
 config/impersonate.yml.local
 config/secrets.yml
 
 # Ignore capistrano
-/Capfile
-/config/deploy.rb
-/config/deploy/
-/lib/capistrano
+#/Capfile
+#/config/deploy.rb
+#/config/deploy/
+#/lib/capistrano

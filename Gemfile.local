@@ -1,0 +1,19 @@
+# Copyright (c) 2015 The Regents of the University of Michigan.
+# All Rights Reserved.
+# Licensed according to the terms of the Revised BSD License
+# See LICENSE.md for details.
+
+group :production do
+  gem 'sqlite3'
+  gem 'mysql2'
+  gem 'puma'
+end
+
+group :deployment do
+  gem 'capistrano', '~> 3.0'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-passenger'
+  gem 'capistrano-bundle_audit', '~> 0.1.0'
+  gem 'dlss-capistrano'
+end

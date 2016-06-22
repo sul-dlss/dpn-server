@@ -49,28 +49,27 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
-
   # Load a salt in what is probably not a good place for it.
-  config.salt = "development_salt"
+  config.salt = Rails.application.secrets.salt
 
-  # Set the cipher key, iv used to *crypt the auth_tokens other nodes
+  # Set the cipher key used to *crypt the auth_tokens other nodes
   # identify us by.
-  config.cipher_key = "foMXggnM3xLHatbSP0ZXW6ThZXOXqp8ImyaJQ/0Jlqo=\n"
-  config.cipher_iv = "L213BeYaK4QDG8krUaCYnA==\n"
+  config.cipher_key = Rails.application.secrets.cipher_key
+  config.cipher_iv = Rails.application.secrets.cipher_iv
 
   # Configure the local node's namespace
-  config.local_namespace = "hathi"
+  config.local_namespace = Rails.application.secrets.local_namespace
 
   # Set the local node's api_root
-  config.local_api_root = "http://127.0.0.1"
+  config.local_api_root = Rails.application.secrets.local_api_root
 
   # Set the staging directory root.
-  config.staging_dir = Rails.root.join("dpnrepo", "staging").to_s
+  config.staging_dir = Rails.application.secrets.staging_dir
 
   # Set the preservation root
   # The directory "pairtree_root" will be created in this folder
-  config.repo_dir = Rails.root.join("dpnrepo", "preservation").to_s
+  config.repo_dir = Rails.application.secrets.repo_dir
 
   # The location of the private key used to pull files from other nodes
-  config.transfer_private_key = "/l/home/dpnadm/.ssh/hathi.key"
+  config.transfer_private_key = Rails.application.secrets.transfer_private_key
 end

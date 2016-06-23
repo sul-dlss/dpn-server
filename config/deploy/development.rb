@@ -9,5 +9,6 @@ Capistrano::OneTimeKey.generate_one_time_key!
 # from the config/environment/production.rb file.  For details, see:
 # https://github.com/sul-dlss/shared_configs/blob/dpn-dev-server
 set :rails_env, 'development'
+set :bundle_without, 'test'
 
 set :delayed_job_workers, 4

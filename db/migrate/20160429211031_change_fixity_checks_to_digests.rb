@@ -5,7 +5,7 @@
 
 class ChangeFixityChecksToDigests < ActiveRecord::Migration
   def change
-    add_reference :fixity_checks, :node, index: true, foreign_key: true
     rename_table :fixity_checks, :message_digests
+    add_reference :message_digests, :node, index: true, foreign_key: true
   end
 end

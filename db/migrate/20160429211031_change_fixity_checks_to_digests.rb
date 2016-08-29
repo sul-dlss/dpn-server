@@ -13,18 +13,16 @@ class ChangeFixityChecksToDigests < ActiveRecord::Migration
   end
 
   def up
-    add_column :fixity_checks, :node_id, :integer
     add_foreign_key :fixity_checks, :nodes,
       column: :node_id,
       on_delete: :nullify,
       on_update: :cascade
-    add_column :fixity_checks, :created_at, :datetime
 
     FixityCheck.all.each do |fc|
       fc.update!(node_id: fc.bag.admin_node_id)
     end
 
-    change_column :fixity_checks, :node_id, :integer, null: false
+    add_column :fixity_checks, :created_at, :datetime
     change_column :fixity_checks, :created_at, :datetime, null: false
 
     rename_table :fixity_checks, :message_digests
@@ -32,7 +30,7 @@ class ChangeFixityChecksToDigests < ActiveRecord::Migration
 
   def down
     rename_table :message_digests, :fixity_checks
-    remove_column :fixity_checks, :node_id
     remove_column :fixity_checks, :created_at
+    remove_foreign_key :fixity_checks, :node_id
   end
 end

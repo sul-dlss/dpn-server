@@ -11,7 +11,7 @@ describe Node do
   it "has a valid factory" do
     expect(Fabricate(:node)).to be_valid
   end
-  
+
   context "local_node" do
     it "has a valid factory" do
       expect(Fabricate(:local_node)).to be_valid
@@ -116,13 +116,14 @@ describe Node do
 
   describe "::local_node" do
     it "finds the local node" do
+      Node.delete_all # ensure there is no existing record for the local node
       Fabricate(:node, namespace: Rails.configuration.local_namespace)
       expect(Node.local_node!.namespace).to eql(Rails.configuration.local_namespace)
     end
   end
-  
+
   {
-    protocols: :protocol, 
+    protocols: :protocol,
     fixity_algs: :fixity_alg,
     replicate_to_nodes: :node,
     replicate_from_nodes: :node,
@@ -138,7 +139,7 @@ describe Node do
       end
     end
   end
-  
+
   [
     :storage_region,
     :storage_type

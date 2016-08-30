@@ -10,7 +10,10 @@ describe BagManRequest, type: :model do
 
   FromNode = Struct.new("FromNode", :namespace)
 
-  before(:each) { Fabricate(:local_node, namespace: Rails.configuration.local_namespace)}
+  before do
+    Fabricate(:local_node)
+  end
+
   it "has a valid factory" do
     expect(Fabricate.build(:bag_man_request)).to be_valid
   end

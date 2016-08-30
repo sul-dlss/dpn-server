@@ -5,7 +5,8 @@
 
 shared_context "with local authentication" do
   before(:each) do
-    node = Fabricate(:local_node, namespace: Rails.configuration.local_namespace)
+    # node = Fabricate(:local_node, namespace: Rails.configuration.local_namespace)
+    node = Fabricate(:local_node)
     @request.headers["Authorization"] = "Token token=#{node.auth_credential}"
   end
 end

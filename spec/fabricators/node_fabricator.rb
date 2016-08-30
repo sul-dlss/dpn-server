@@ -26,7 +26,8 @@ Fabricator(:node) do |f|
 end
 
 Fabricator(:local_node, class_name: :node) do |f|
-  f.namespace { Rails.configuration.local_namespace }
+  f.namespace { Faker::Internet.password(10, 20) }
+  # f.namespace { Rails.configuration.local_namespace }
   name { Faker::Company.name }
   ssh_pubkey { Faker::Internet.password(20) }
   storage_region

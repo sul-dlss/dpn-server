@@ -4,35 +4,8 @@
 # See LICENSE.md for details.
 
 class ChangeFixityChecksToDigests < ActiveRecord::Migration
-
-  class Bag < ActiveRecord::Base
-  end
-
-  class FixityCheck < ActiveRecord::Base
-    belongs_to :bag
-  end
-
-  def up
-    add_column :fixity_checks, :node_id, :integer
-    add_foreign_key :fixity_checks, :nodes,
-      column: :node_id,
-      on_delete: :nullify,
-      on_update: :cascade
-    add_column :fixity_checks, :created_at, :datetime
-
-    FixityCheck.all.each do |fc|
-      fc.update!(node_id: fc.bag.admin_node_id)
-    end
-
-    change_column :fixity_checks, :node_id, :integer, null: false
-    change_column :fixity_checks, :created_at, :datetime, null: false
-
+  def change
     rename_table :fixity_checks, :message_digests
-  end
-
-  def down
-    rename_table :message_digests, :fixity_checks
-    remove_column :fixity_checks, :node_id
-    remove_column :fixity_checks, :created_at
+    add_reference :message_digests, :node, index: true, foreign_key: true
   end
 end

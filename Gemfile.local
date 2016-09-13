@@ -15,4 +15,5 @@ group :deployment do
   gem 'capistrano-passenger'
   gem 'capistrano-bundle_audit', '~> 0.1.0'
   gem 'dlss-capistrano'
+  gem 'capistrano-git-submodule-strategy', '~> 0.1', git: 'https://github.com/ekho/capistrano-git-submodule-strategy.git'
 end

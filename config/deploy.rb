@@ -27,6 +27,7 @@ set :linked_files, %w(
   config/resque.yml
   config/resque-pool.yml
   config/secrets.yml
+  config/honeybadger.yml
 )
 
 # Default value for linked_dirs is []
@@ -56,3 +57,5 @@ namespace :deploy do
     end
   end
 end
+
+set :honeybadger_env, fetch(:stage)

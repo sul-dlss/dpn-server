@@ -17,3 +17,5 @@ group :deployment do
   gem 'dlss-capistrano'
   gem 'capistrano-git-submodule-strategy', '~> 0.1', git: 'https://github.com/ekho/capistrano-git-submodule-strategy.git'
 end
+
+gem 'honeybadger'
